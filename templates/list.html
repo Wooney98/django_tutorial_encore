@@ -7,12 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <title>전체 List</title>
+    <h1>전체 List</h1>
+
     <p>no | 이름 | 제목 | 내용 | 작성 날짜</p>
     <ul>
         {% for article in article_list %}
             <p> <a href="/view_detail/{{ article.id }}">{{article.id}}</a> | {{ article.title }} | {{ article.name }} | {{ article.contents }} | {{ article.cdate|date:"Y년 M d일 D"}} </p>
-        {% endfor %}            <!-- http 경로 | 만약 article.id 변수를 지우면 주소창엔 /view_detail의 페이지만 나온다.-->
+        {% endfor %}            
     </ul>
 </body>
 </html>
