@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import Form
+from .models import Article
 
 # Create your views here.
 def write(request):
@@ -21,4 +22,8 @@ def write(request):
     else:
         form = Form()    
     return render(request, 'write.html', {'data1':hello, 'data2':hello2, 'form':form}) 
-    
+
+
+def articleList(request):
+    article_list = Article.objects.all()
+    return render(request, 'list.html',{'article_list':article_list})
