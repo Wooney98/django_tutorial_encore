@@ -9,6 +9,14 @@
 <body>
     <p>{{data1}} </p>
     <h1>{{data2}}</h1>
+    <form action="" method="post">
+        <table>
+            {{form}} {% csrf_token %}
+            <!-- 데이터를 서버로 넘길때 필요한 토큰 
+            csrf 공격을 받지 않게 하기위해 사용-->
+        </table>
+        <button type="submit">확인</button>
+    </form>
 
 </body>
 </html>

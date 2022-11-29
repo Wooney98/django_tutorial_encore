@@ -1,9 +1,24 @@
 from django.shortcuts import render
+from .forms import Form
 
 # Create your views here.
 def write(request):
     # urls에서 요청한 path write를 랜더링하라
-    # 비즈니스 로직 구현 => render(request , html 템플릿 파일, {'키':'벨류'} )
+    # 비즈니스 로직 구현 => render(request , html 템플릿 파일, {'키':'값'} )
     hello = "Hello Django!!"
     hello2 = "HeLL 당고"
-    return render(request, 'write.html', {'data1':hello, 'data2':hello2}) 
+    form = Form()
+
+    # if
+    # requset의 메소드가 POST이면,
+    # 사용자가 입력한 form 데이터를 변수에 저장하고,
+    # ORM으로 DB에 저장!
+    # else
+    if request.method == "POST":
+        form = Form(request.POST)
+        if form.is_valid():
+            form.save() # 필드값 저장
+    else:
+        form = Form()    
+    return render(request, 'write.html', {'data1':hello, 'data2':hello2, 'form':form}) 
+    
