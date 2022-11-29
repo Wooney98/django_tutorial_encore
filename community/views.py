@@ -27,3 +27,9 @@ def write(request):
 def articleList(request):
     article_list = Article.objects.all()
     return render(request, 'list.html',{'article_list':article_list})
+
+
+def viewDetail(request, num=1):
+    #클릭한 레코드의 DB 읽어오기
+    article_detail = Article.objects.get(id=num)
+    return render(request, 'view_detail.html', {'article_detail':article_detail})
