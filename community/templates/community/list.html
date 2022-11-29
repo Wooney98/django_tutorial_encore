@@ -12,8 +12,10 @@
     <p>no | 이름 | 제목 | 내용 | 작성 날짜</p>
     <ul>
         {% for article in article_list %}
-            <p> <a href="/view_detail/{{ article.id }}">{{article.id}}</a> | {{ article.title }} | {{ article.name }} | {{ article.contents }} | {{ article.cdate|date:"Y년 M d일 D"}} </p>
+            <p> <a href="/view_detail/{{ article.id }}">{{article.id}}</a> | {{ article.title }} |
+                 {{ article.name }} | {{ article.contents }} | {{ article.cdate|date:"Y년 M d일 D"}} </p>
         {% endfor %}            
     </ul>
+    
 </body>
 </html>
