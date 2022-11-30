@@ -30,4 +30,6 @@ urlpatterns = [
     # main urls인 이곳에서 community를 include한다.
     # 즉, url의 route를 변경한것이다.
     path('', index, name='index'),
+
+    path('dashboard/', include('dashboard.urls')),
 ]

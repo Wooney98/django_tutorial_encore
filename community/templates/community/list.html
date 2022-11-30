@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'partials/base.html' %}
+{% block list %}
     <h1>전체 List</h1>
 
-    <p>no | 이름 | 제목 | 내용 | 작성 날짜</p>
+    <p>no | 제목 | 이름 | 내용 | 작성 날짜</p>
     <ul>
         {% for article in article_list %}
             <p> <a href="/community/view_detail/{{ article.id }}">{{article.id}}</a> | {{ article.title }} |
                  {{ article.name }} | {{ article.contents }} | {{ article.cdate|date:"Y년 M d일 D"}} </p>
         {% endfor %}            
     </ul>
+{% endblock list %}
     
-</body>
-</html>

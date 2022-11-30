@@ -6,8 +6,9 @@ from .models import Article
 def write(request):
     # urls에서 요청한 path write를 랜더링하라
     # 비즈니스 로직 구현 => render(request , html 템플릿 파일, {'키':'값'} )
-    hello = "Hello Django!!"
-    hello2 = "HeLL 당고"
+    # hello = "Hello Django!!"
+    # hello2 = "HeLL 당고"
+
     form = Form()
 
     # if
@@ -21,7 +22,7 @@ def write(request):
             form.save() # 필드값 저장
     else:
         form = Form()    
-    return render(request, 'community/write.html', {'data1':hello, 'data2':hello2, 'form':form}) 
+    return render(request, 'community/write.html', {'form':form}) 
 
 
 def articleList(request):

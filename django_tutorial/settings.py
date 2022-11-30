@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'community', # apps의 class 지역변수
+    'dashboard',
 ]
 
 MIDDLEWARE = [
