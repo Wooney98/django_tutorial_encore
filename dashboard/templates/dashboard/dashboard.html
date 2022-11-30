@@ -3,12 +3,29 @@
     대시보드 페이지
 {% endblock title %}
 
+{% load  %}
 {% block content %}
-    <h1>차트</h1>
-    <div>
-        <canvas id="myChart"></canvas>
+    <!-- <h1>차트</h1> -->
+    
+    <div class="row mt-3 pt-3">
+        <div class="col-md-4">
+            <div class="border p-3 shadow">
+                <h4>Add Data</h4>
+                <hr>
+                <form method="POST">
+                    {{ form }}{% csrf_token %}
+                    <input type="submit" class="btn btn-success btn-block" value="입력">
+                </form>
+            </div>
+        </div>
+        <div class = 'col'>
+            <canvas id="myChart"></canvas>
+        </div>
     </div>
+    
+    
 {% endblock content %}
+
 
 {% block script %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -17,10 +34,21 @@
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            //labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels: [
+                {% for data in country_data %}
+                '{{ data.country }}',
+                {% endfor %}
+
+            ],
             datasets: [{
                 label: '# of Votes',
-                data: [65, 59, 80, 81, 56, 55, 40],
+                //data: [65, 59, 80, 81, 56, 55, 40],
+                data: [
+                    {% for data in country_data %}
+                    '{{ data.population }}',
+                    {% endfor %}
+                ],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(255, 159, 64, 0.2)',

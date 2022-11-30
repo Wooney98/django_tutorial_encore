@@ -9,7 +9,6 @@ def write(request):
     # hello = "Hello Django!!"
     # hello2 = "HeLL 당고"
 
-    form = Form()
 
     # if
     # requset의 메소드가 POST이면,
