@@ -1,9 +1,10 @@
 {% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+
 {% block title %}
     대시보드 페이지
 {% endblock title %}
 
-{% load  %}
 {% block content %}
     <!-- <h1>차트</h1> -->
     
@@ -13,7 +14,7 @@
                 <h4>Add Data</h4>
                 <hr>
                 <form method="POST">
-                    {{ form }}{% csrf_token %}
+                    {{ form|crispy }} {% csrf_token %}
                     <input type="submit" class="btn btn-success btn-block" value="입력">
                 </form>
             </div>
@@ -22,7 +23,6 @@
             <canvas id="myChart"></canvas>
         </div>
     </div>
-    
     
 {% endblock content %}
 

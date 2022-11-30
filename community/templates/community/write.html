@@ -1,11 +1,11 @@
 {% extends 'partials/base.html' %}
-
+{% load crispy_forms_tags %}
     <!-- <p>{{data1}} </p>
     <h1>{{data2}}</h1> -->
 {% block write %}
 <form action="" method="post">
     <table>
-        {{form}} {% csrf_token %}
+        {{ form|crispy }} {% csrf_token %}
         <!-- 데이터를 서버로 넘길때 필요한 토큰 
         csrf 공격을 받지 않게 하기위해 사용-->
     </table>

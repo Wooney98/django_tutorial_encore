@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'community', # apps의 class 지역변수
     'dashboard',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +127,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+### crispy 4 버전
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+### crispy bootstrap 5 버전 ###
+# CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+# CRISPY_TEMPLATE_PACK = "bootstrap5"
