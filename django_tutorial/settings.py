@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'community', # apps의 class 지역변수
     'dashboard',
     'crispy_forms',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +139,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 # CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+# Django에서 제공되는 인증 환경변수
+LOGIN_REDIRECT_URL = '/' # home
+

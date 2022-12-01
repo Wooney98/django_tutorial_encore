@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from community.views import index#,write,articleList, viewDetail, index
-
+from community.views import index#,write,articleList, viewDetail, 
+from .views import UserCreateView,UserCreateDoneTV
+# -> django_tutorials엔 view가 없어서 인식 못하는중
+# 그러므로 views를 만들자!!
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,4 +34,13 @@ urlpatterns = [
     path('', index, name='index'),
 
     path('dashboard/', include('dashboard.urls')),
+
+    ### Login 인증 path ###
+    # Django의 내장되어있는 urls
+    path('accounts/', include("django.contrib.auth.urls")),
+    # 가입처리
+    # class형의 UserCreateView이기에 as_view()를 사용한다.
+    path('accounts/register/', UserCreateView.as_view(), name='register'),
+    # 계정생성이 완료되었다는 메시지
+    path('accounts/register/done/', UserCreateDoneTV.as_view(), name='register_done')
 ]
