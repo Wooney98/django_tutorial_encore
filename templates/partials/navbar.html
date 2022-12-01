@@ -2,9 +2,11 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/"><i class="bi bi-house-door" style="color: pink; size: 20px;"></i>WooneyLAB</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand" href="/"><i class="bi bi-house-door"
+                        style="color: pink; size: 20px;"></i>WooneyLAB</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -31,7 +33,7 @@
                         </li>
                     </ul>
                 </div>
-                
+
                 <!-- 로그인 인증 -->
                 <!-- flex Box  justify-content-end : 주축이 끝나는 오른쪽에 배치하기-->
                 <div class="collapse navbar-collapse justify-content-end">
@@ -40,11 +42,13 @@
                         <li class="nav-item dropdown">
                             <!-- 로그인이 완료된 경우 -->
                             {% if user.is_active %}
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <!-- {{ user.username }}  --> <!--&ensp : 2칸띄우기 -->
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <!-- {{ user.username }}  -->
+                                <!--&ensp : 2칸띄우기 -->
                                 <i class="bi bi-person-circle"></i>&ensp;{% firstof user.get_short_name user.get_username %}&ensp;
                             </a>
-                            
+
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{% url 'logout' %}">로그아웃</a></li>
                                 <li><a class="dropdown-item" href="{% url 'password_change' %}">비밀번호변경</a></li>
@@ -53,7 +57,7 @@
                             {% else %}
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                Anonymous
+                                로그인/회원가입
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{% url 'login' %}">로그인</a></li>
