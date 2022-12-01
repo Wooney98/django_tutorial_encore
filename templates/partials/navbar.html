@@ -33,19 +33,33 @@
                 </div>
                 
                 <!-- 로그인 인증 -->
-                
+                <!-- flex Box  justify-content-end : 주축이 끝나는 오른쪽에 배치하기-->
                 <div class="collapse navbar-collapse justify-content-end">
                     <!-- 왼쪽 점 없애기 -->
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
+                            <!-- 로그인이 완료된 경우 -->
+                            {% if user.is_active %}
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <!-- {{ user.username }}  --> <!--&ensp : 2칸띄우기 -->
+                                <i class="bi bi-person-circle"></i>&ensp;{% firstof user.get_short_name user.get_username %}&ensp;
+                            </a>
+                            
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'logout' %}">로그아웃</a></li>
+                                <li><a class="dropdown-item" href="{% url 'password_change' %}">비밀번호변경</a></li>
+                            </ul>
+                            <!-- 로그인이 안된 경우 -->
+                            {% else %}
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 Anonymous
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{% url '' %}">로그인</a></li>
-                                <li><a class="dropdown-item" href="{% url '' %}">회원가입</a></li>
+                                <li><a class="dropdown-item" href="{% url 'login' %}">로그인</a></li>
+                                <li><a class="dropdown-item" href="{% url 'register' %}">회원가입</a></li>
                             </ul>
+                            {% endif %}
                         </li>
                     </ul>
                 </div>
