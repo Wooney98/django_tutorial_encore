@@ -15,7 +15,9 @@
                 <hr>
                 <form method="POST">
                     {{ form|crispy }} {% csrf_token %}
-                    <input type="submit" class="btn btn-success btn-block" value="입력">
+                    <div class="d-grid gap-2 mt-2">
+                        <input type="submit" class="btn btn-success btn-block" value="입력">
+                    </div>
                 </form>
             </div>
         </div>
@@ -28,6 +30,7 @@
 
 
 {% block script %}
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     const ctx = document.getElementById('myChart');
