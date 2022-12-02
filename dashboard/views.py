@@ -37,10 +37,10 @@ def dashboard(request):
 
             )
             #form.save()
-            
+
             #return redirect('/dashboard')
             # redirect하면 else가 실행된다.
-            return redirect('.')
+            return redirect('.') # else = 초기화 느낌?
     else:
         form = CountryDataForm()
 
