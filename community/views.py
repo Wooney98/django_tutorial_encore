@@ -1,6 +1,6 @@
 from django.shortcuts import render
-# from .forms import Form
-# from .models import Article
+from .forms import Form
+from .models import Article
 
 # Create your views here.
 # # FBV형
@@ -46,6 +46,9 @@ def index(request):
 from django.views.generic import CreateView, ListView, DetailView, DeleteView, UpdateView
 from community.models import Article
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django_tutorial.views import OwnerOnlyMixin
+
 
 class ArticleListView(ListView):
     model = Article
@@ -57,9 +60,35 @@ class ArticleDetailView(DetailView):
 
 class WriteFormView(CreateView):
     model = Article
-    fileds = ['name','title','contents','url','email']
+    fields = ['name','title','contents','url','email']
     template_name = "community/write.html"
-    success_url = reverse_lazy('community:article_list')
+    success_url = reverse_lazy('community:list')
 
     def form_valid(self, form):
+        form.instance.owner = self.request.user
+        #폼에 연결된 모델 객체의 owner필드에 현재 로그인 된 user 객체 할당
         return super().form_valid(form)
+
+# 변경(login user 자료만 list_up)
+class ArticleChangeView(LoginRequiredMixin, ListView):
+    template_name = 'community/change_list.html'
+    def get_queryset(self):
+        return Article.objects.filter(owner=self.request.user)
+    # get_queryset()
+    # 화면에 출력할 레코드 리스트 반환 
+    # Article 테이블의 레코드 중에 owner 필드의 소유 레코드만 필터링 해서 리스트 반환
+
+
+
+#로그인 user 메모 수정(Update)
+class ArticleUpdateView(OwnerOnlyMixin,UpdateView):
+    model = Article
+    template_name = 'community/article_update.html'
+    fields = ['name','title','contents','url','email']
+    success_url = reverse_lazy('community:change_list')
+
+#로그인 user 메모 삭제(Delete)
+class ArticleDeleteView(OwnerOnlyMixin,DeleteView):
+    model = Article
+    template_name = 'community/article_delete.html'
+    success_url = reverse_lazy('community:change_list')

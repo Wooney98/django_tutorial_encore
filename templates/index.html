@@ -4,7 +4,7 @@
 {% block content %}
 <h1>환상의 나라 대륭테크노타운</h1>
 <div style="text-align: center;">
-    <img src="{% static '/images/1.jpg' %}" alt="홈 이미지">
+    <img src="{% static '/images/1.gif' %}" alt="홈 이미지">
 </div>
 <ul>
     <table class="table table-hover">
@@ -13,24 +13,24 @@
                 <th scope="col">no</th>
                 <th scope="col">제목</th>
                 <th scope="col">이름</th>
-                <th scope="col">내용</th>
+                <!-- <th scope="col">내용</th> -->
                 <th scope="col">작성 날짜</th>
             </tr>
         </thead>
         <tbody>
             {% for article in latest_article_list %}
-            <tr>
+            <tr class="text-center">
                 <th scope="row"><a href="/community/view_detail/{{ article.id }}">{{ article.id }}</a></th>
                 <td>{{article.title}}</td>
                 <td>{{ article.name }}</td>
-                <td>{{ article.contents }}</td>
+                <!-- <td>{{ article.contents }}</td> -->
                 <td>{{ article.cdate|date:"Y년 M d일 D"}}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </ul>
-<button type="button" class="btn btn-success"><a href="/community/write">메모작성하기</a></button>
+<!-- <button type="button" class="btn btn-success"><a href="/community/write">메모작성하기</a></button> -->
 
 <div class="accordion" id="accordionExample">
     <div class="accordion-item">
